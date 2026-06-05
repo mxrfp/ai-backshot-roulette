@@ -25,7 +25,7 @@ def_approx = 9999
 def_bullets = 5
 
 print("-"*30)
-print("AI BACKSHOT ROULETTE".center(30))
+print("AI BUCKSHOT ROULETTE".center(30))
 print("-"*30)
 print()
 print("[0]: SHOOT AT YOURSELF")
