@@ -71,10 +71,4 @@ Upon running the game, the AI will perform a brief training session. After that,
 - `AI.py`: Contains the `SimpleAi` class. Handles the mathematical training loop and decision-making process.
 - `main.py`: The entry point of the script. Handles user inputs, the `while` loops, and rendering the ASCII graphics.
 
-## Roadmap & Future Improvements
-
-- [ ] Rename `lifes` to `lives` to follow proper English syntax.
-- [ ] Refactor repetitive code (DRY principle) by extracting bullet-reloading logic into a dedicated method.
-- [ ] Add an iteration limit (epochs) to the `while True` loop inside the AI training method to prevent infinite loops in flat-gradient scenarios.
-- [ ] Separate the win-state logic from `make_move()` to the main loop for better architecture.
 
