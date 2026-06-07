@@ -42,7 +42,7 @@ Python 3.8 or higher is required. The project relies on `numpy` for standard mat
 1. Clone the repository:
    ```bash
    git clone https://github.com/YOUR_USERNAME/ai-backshot-roulette.git
-   cd ai-backshot-roulette
+   cd ai-buckshot-roulette
    ```
 
 2. Install dependencies:
