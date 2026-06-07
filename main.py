@@ -1,5 +1,6 @@
 from game import Game
 from AI import SimpleAi
+import time
 
 def bullets(lst: list[int]):
     mask = {
@@ -21,11 +22,11 @@ def bullets(lst: list[int]):
 
                 
 
-def_approx = 9999
+def_approx = 10000
 def_bullets = 5
 
 print("-"*30)
-print("AI BUCKSHOT ROULETTE".center(30))
+print("AI BACKSHOT ROULETTE".center(30))
 print("-"*30)
 print()
 print("[0]: SHOOT AT YOURSELF")
@@ -33,7 +34,7 @@ print()
 print("[1]: SHOOT AT THE ENEMY")
 
 game_to_play = Game(def_bullets)
-bot = SimpleAi(Game(5))
+bot = SimpleAi(Game(def_bullets))
 
 while True:
     if (choice := input("Start (y/n): ").lower().strip()) in "yn":
@@ -72,6 +73,7 @@ while True:
         move = bot.play(game_to_play)
         print(f"The bot played: {move}")
         game_to_play.make_move(move)
+        time.sleep(0.5)
     print()
     print(f"Bullet was " + ("blank" if game_to_play.next_bullet == 0 else "real"))
     print()

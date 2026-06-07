@@ -30,7 +30,7 @@ class SimpleAi:
                 else:
                         outcomes.append(0)
             return 1- (sum(outcomes)/len(outcomes))
-        whg = random.random()
+        whg = random.randint(2, 10)
         step = 0.001
         while True:
             whgs = [whg-step, whg, whg+step]
