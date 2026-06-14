@@ -2,32 +2,29 @@ from game import Game
 from AI import SimpleAi
 import time
 
+
 def bullets(lst: list[int]):
-    mask = {
-        1: "real",
-        0: "blank"
-    }
+    mask = {1: "real", 0: "blank"}
     string = ""
     for i in range(7):
         if i == 0 or i == 6:
-            string += ("-"*7 + "  ")*len(lst) + "\n"
-        elif i == 7//2:
+            string += ("-" * 7 + "  ") * len(lst) + "\n"
+        elif i == 7 // 2:
             f_string = ""
             for j in lst:
                 f_string += "|" + mask[j].center(6) + "| "
             string += f_string + "\n"
-        else: 
-            string += ("|" + " "*6 + "| ")*len(lst) + "\n"
+        else:
+            string += ("|" + " " * 6 + "| ") * len(lst) + "\n"
     return string
 
-                
 
 def_approx = 10000
 def_bullets = 5
 
-print("-"*30)
+print("-" * 30)
 print("AI BACKSHOT ROULETTE".center(30))
-print("-"*30)
+print("-" * 30)
 print()
 print("[0]: SHOOT AT YOURSELF")
 print()
@@ -63,7 +60,7 @@ while True:
                 if move == "exit":
                     exit()
                 move = int(move)
-                if move not in {0,1}:
+                if move not in {0, 1}:
                     raise ValueError
                 break
             except ValueError:
@@ -77,10 +74,11 @@ while True:
     print()
     print(f"Bullet was " + ("blank" if game_to_play.next_bullet == 0 else "real"))
     print()
-    print("Your lifes: " + "|"*game_to_play.lifes[0] + "           " + "Bot's lifes: " + "|"*game_to_play.lifes[1])
+    print(
+        "Your lifes: "
+        + "|" * game_to_play.lifes[0]
+        + "           "
+        + "Bot's lifes: "
+        + "|" * game_to_play.lifes[1]
+    )
     print()
-
-    
-
-        
-
