@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import math
 
 
 class SimpleAi:
@@ -10,6 +11,8 @@ class SimpleAi:
 
     def train(self, graph_approx: int) -> None:
         def abs_error(wh, g_ax) -> float:
+            def sigmoid(num: int) -> float:
+                return 1/(1+(math.e**(-num)))
             outcomes = []
             for i in range(g_ax):
                 outcome = None
@@ -17,10 +20,7 @@ class SimpleAi:
                 while outcome is None:
                     if self.game.turn == counter_for_turn:
                         choice = (np.array(self.game.bullets) * wh).sum()
-                        if choice > self.threshold:
-                            outcome = self.game.make_move(1)
-                        else:
-                            outcome = self.game.make_move(0)
+                        outcome = self.game.make_move(0 if np.random.random() < (1 - sigmoid(choice)) else 1)
                     else:
                         if sum(self.game.bullets) > self.game.init_bullets // 2:
                             outcome = self.game.make_move(1)
@@ -32,8 +32,8 @@ class SimpleAi:
                     outcomes.append(0)
             return 1 - (sum(outcomes) / len(outcomes))
 
-        whg = random.randint(2, 10)
-        step = 0.5
+        whg = -10 #random.randint(-10, 10)
+        step = 10
         calculated_points = dict()
         epoch = 1000
         for _ in range(epoch):

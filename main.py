@@ -22,16 +22,18 @@ def bullets(lst: list[int]):
 def_approx = 10000
 def_bullets = 5
 
+game_to_play = Game(def_bullets)
+bot = SimpleAi(Game(def_bullets))
+
+
 print("-" * 30)
-print("AI BACKSHOT ROULETTE".center(30))
+print("AI BUCKSHOT ROULETTE".center(30))
 print("-" * 30)
 print()
 print("[0]: SHOOT AT YOURSELF")
 print()
 print("[1]: SHOOT AT THE ENEMY")
-
-game_to_play = Game(def_bullets)
-bot = SimpleAi(Game(def_bullets))
+print()
 
 while True:
     if (choice := input("Start (y/n): ").lower().strip()) in "yn":

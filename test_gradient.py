@@ -4,6 +4,7 @@ import random
 import numpy as np
 import time
 from numba import njit, prange
+import math
 
 game_graph = Game(5)
 is_parallel = None
@@ -30,11 +31,14 @@ while is_parallel is None:
     is_parallel = mask.get(input("Do you wanna use multi-threading?(y/n):").strip().lower())
 
 
+
 @njit(fastmath=True)
 def abs_error(wh) -> float:
+    def sigmoid(num: int) -> float:
+        return 1/(1+(math.e**(-num)))
     g_ax = graph_approx
     game = Game(5)
-    threshold = 2
+    threshold = 2 #da rimuovere
     outcomes = []
     for i in range(g_ax): #type: ignore
         outcome = None
@@ -45,10 +49,7 @@ def abs_error(wh) -> float:
                 for i in game.bullets:
                     sum_b += i * wh
                 choice = sum_b
-                if choice > threshold:
-                    outcome = game.make_move(1)
-                else:
-                    outcome = game.make_move(0)
+                outcome = game.make_move(0 if np.random.random() < (1 - sigmoid(choice)) else 1)
             else:
                 if sum(game.bullets) > game.init_bullets // 2:
                     outcome = game.make_move(1)
@@ -64,7 +65,7 @@ def abs_error(wh) -> float:
 x = np.linspace(-10, 10, (points))
 y = []
 avg_time = 10**-9
-
+        
 @njit(parallel=True, fastmath=True)
 def parallel_results(lst):
     results = np.zeros(len(lst), dtype=np.float64)
